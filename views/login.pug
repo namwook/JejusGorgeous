@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    .header.my-auto
+        h1.display-1 Login page
+
+    .login.my-2
+        fieldset
+            form(action='/auth/login',method='post')
+                .form-row
+                        .form-group.col-xs-12.col-sm-12.col-md-12
+                            input.form-control(type='text',name='username',placeholder='username')
+                        .form-group.col-xs-12.col-sm-12.col-md-12
+                            input.form-control(type='password',name='password',placeholder='password')
+                        .form-group.col-xs-12.col-sm-12.col-md-12
+                            input.form-control(type='submit')
+

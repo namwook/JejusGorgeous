@@ -1,0 +1,20 @@
+body {
+    max-width: 100%;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #fff;
+}
+
+a {
+    color: #00B7FF;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+/*#headerGroup {
+    position: sticky;
+    top: 0;
+    z-index: 1071;
+    width: 100%;
+}*/

@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h4.display-4 Welcome to #{title}
+    // Nav tabs
+    ul.nav.nav-tabs(role='tablist')
+        li.nav-item
+            a.nav-link.active(data-toggle='tab', href='#home', role='tab', aria-controls='home', aria-selected='true') Home
+        li.nav-item
+            a.nav-link(data-toggle='tab', href='#profile', role='tab', aria-controls='profile', aria-selected='false') Profile
+        li.nav-item
+            a.nav-link(data-toggle='tab', href='#messages', role='tab', aria-controls='messages', aria-selected='false') Messages
+        li.nav-item
+            a.nav-link(data-toggle='tab', href='#settings', role='tab', aria-controls='settings', aria-selected='false') Settings
+    // Tab panes
+    .tab-content
+        #home.tab-pane.active(role='tabpanel', aria-labelledby='home-tab') ...1
+        #profile.tab-pane(role='tabpanel', aria-labelledby='profile-tab') ...2
+        #messages.tab-pane(role='tabpanel', aria-labelledby='messages-tab') ...3
+        #settings.tab-pane(role='tabpanel', aria-labelledby='settings-tab') ...4
+    h3.display-3 Welcom #{msg}

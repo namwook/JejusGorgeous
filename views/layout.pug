@@ -1,0 +1,48 @@
+doctype html
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css',
+        integrity='sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb',
+        crossorigin='anonymous')
+        link( href="https://fonts.googleapis.com/css?family=Berkshire+Swash", rel="stylesheet")
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+
+        body.container
+            #headerGroup
+                nav.navbar.fixed-top.navbar-expand-lg.navbar-light.bg-light.flex-column.flex-sm-row
+                    a.navbar-brand(href='/') LOGO
+                    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+                        span.navbar-toggler-icon
+                    #navbarSupportedContent.collapse.navbar-collapse
+                        ul.navbar-nav.mr-auto
+                            li.nav-item.active
+                                a.nav-link(href='/list')
+                                    | 프로젝트
+                            li.nav-item
+                                a.nav-link(href='#') 이용방법
+                            li.nav-item
+                                a.nav-link(href='/list/new') 프로젝트 등록
+                            li.nav-item.dropdown
+                                a.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                                    | Dropdown
+                                .dropdown-menu(aria-labelledby='navbarDropdown')
+                                    a.dropdown-item(href='#') Action
+                                    a.dropdown-item(href='#') Another action
+                                    .dropdown-divider
+                                    a.dropdown-item(href='#') Something else here
+                            li.nav-item
+                                a.nav-link.disabled(href='#') Disabled
+                            li.nav-item
+                                a.nav-link(href='/auth/login') 로그인
+                            li.nav-item
+                                a.nav-link(href='/auth/logout') 로그아웃
+                        form.form-inline.my-2.my-lg-0
+                            input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
+                            button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+            // FIXME : fixed-top 부분 밑으로 내용이 나오도록 바꾸기.
+            block content
+            script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
+            script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js", integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh", crossorigin="anonymous")
+            script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js", integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ", crossorigin="anonymous")
