@@ -18,12 +18,12 @@ html
                     #navbarSupportedContent.collapse.navbar-collapse
                         ul.navbar-nav.mr-auto
                             li.nav-item.active
-                                a.nav-link(href='/list')
+                                a.nav-link(href='/prjList')
                                     | 프로젝트
                             li.nav-item
                                 a.nav-link(href='#') 이용방법
                             li.nav-item
-                                a.nav-link(href='/list/new') 프로젝트 등록
+                                a.nav-link(href='/prjRegister') 프로젝트 등록
                             li.nav-item.dropdown
                                 a.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
                                     | Dropdown
@@ -38,11 +38,14 @@ html
                                 a.nav-link(href='/auth/login') 로그인
                             li.nav-item
                                 a.nav-link(href='/auth/logout') 로그아웃
+                            li.nav-item
+                                a.nav-link(href='/signUp') 회원가입
                         form.form-inline.my-2.my-lg-0
                             input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
                             button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
-            // FIXME : fixed-top 부분 밑으로 내용이 나오도록 바꾸기.
+            // FIXME : 해당 메뉴로 들어갔을때 해당메뉴는 탭 사라지게 하기.
             block content
             script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js", integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN", crossorigin="anonymous")
             script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js", integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh", crossorigin="anonymous")
             script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js", integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ", crossorigin="anonymous")
+            script(src='https://smartlock.google.com/client')

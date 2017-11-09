@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    h4.display-4 프로젝트 편집
+    .row.mx-auto
+        .col-12
+            fieldset
+                form(action='/prjList/' + param.id, method='post')
+                    .form-row
+                        .form-group.col-xs-8.col-sm-8.col-md-8
+                            input.form-control(type='text',name='title',placeholder='title', value=param.title)
+                        .form-group.col-xs-4.col-sm-4.col-md-4
+                            input.form-control(type='text',name='author',placeholder='author',value=param.author)
+                        .form-group.col-xs-12.col-sm-12.col-md-12
+                            textarea.form-control(type='text',name='description',placeholder='description')=param.description
+                        .form-group.col-xs-12.col-sm-12.col-md-12
+                            input.form-control(type='submit')

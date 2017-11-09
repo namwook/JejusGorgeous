@@ -8,7 +8,10 @@ import * as session from 'express-session';
 import * as index from './routes/index';
 import * as users from './routes/users';
 import * as auth from './routes/auth';
-import * as list from './routes/list';
+import * as list from './routes/prjList';
+import * as reg from './routes/prjRegister';
+// import * as edit from './routes/prjEdit';
+import * as signUp from './routes/signUp';
 
 var app = express();
 
@@ -33,15 +36,18 @@ app.use(session({
     // : 세션아이디를 실제로 사용하기전까지는 발급하지말아라
 }));
 
+// app.use('/prjEdit', edit.router);
 app.use('/', index.router);
 app.use('/users', users.router);
 app.use('/auth', auth.router);
-app.use('/list', list.router);
+app.use('/prjList', list.router);
+app.use('/prjRegister', reg.router);
+app.use('/signUp', signUp.router);
 
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
@@ -58,3 +64,4 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+

@@ -15,8 +15,7 @@ router.get('/', (req: Request, res: Response) => {
 
     console.log(`session length : ${req.session.count}`);
     res.render('index', {
-        title: 'Jejus Gorgeous',
-        msg: msg;
+        title: 'Jejus Gorgeous', msg: msg
     });
 });
 

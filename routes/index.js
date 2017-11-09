@@ -12,8 +12,7 @@ exports.router.get('/', (req, res) => {
         msg = 'Visitor';
     console.log(`session length : ${req.session.count}`);
     res.render('index', {
-        title: 'Jejus Gorgeous',
-        msg: msg
+        title: 'Jejus Gorgeous', msg: msg
     });
 });
 //# sourceMappingURL=index.js.map

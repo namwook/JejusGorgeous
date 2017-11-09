@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    h4.display-4 Project
+    .row
+        .col
+            artcle
+                if row
+                    h2= row.title
+                    = row.description
+                    div= 'by ' + row.author
+                else
+                    h2 welcome
+                    | This is all of project list.
+
+    .row
+        .col
+            ul
+                if(row)
+                    li
+                        a(href='/prjList/' + row.id)= row.title
+                if(!row && rows)
+                    each topic in rows
+                        li
+                            a(href='/prjList/' + topic.id)= topic.title
+
+    .row
+        .col
+            a(href='/prjRegister') 프로젝트 등록
+        .col
+            if(row)
+                a(href='/prjList') 목록보기
+        .col
+            if(row)
+                a(href='/prjList/' + id + '/edit') 편집하기

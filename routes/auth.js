@@ -4,13 +4,18 @@ const express = require("express");
 exports.router = express.Router();
 /* GET home page. */
 exports.router.get('/login', (req, res) => {
-    res.render('login', {
-        title: 'Jejus Gorgeous',
-        msg: 'hi session'
-    });
+    if (!req.session.displayName) {
+        res.render('login', {
+            title: 'Jejus Gorgeous',
+            msg: 'hi session'
+        });
+    }
+    else {
+        res.redirect('/');
+    }
 });
 exports.router.post('/login', (req, res) => {
-    // FIXME : 실제로라면 디비작업 추가
+    // FIXME : 실제로라면 디비데이터와 맞는지 작업 추가
     let user = {
         username: 'nw',
         password: '111',

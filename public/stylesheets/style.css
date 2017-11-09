@@ -1,4 +1,6 @@
 body {
+    /* FIXME: fixed top 때문인 padding-top을 반응형으로 바꿔줘야함 , 아닌가.. */
+    padding-top:70px;
     max-width: 100%;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
     background-color: #fff;
@@ -11,10 +13,3 @@ a {
 *, ::after, ::before {
     box-sizing: border-box;
 }
-
-/*#headerGroup {
-    position: sticky;
-    top: 0;
-    z-index: 1071;
-    width: 100%;
-}*/
