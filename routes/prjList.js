@@ -86,4 +86,66 @@ exports.router.get('/:id/edit', (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
-//# sourceMappingURL=PrjList.js.map
+exports.router.get('/:id/delete', (req, res) => {
+    let sql = 'select id, title from projectlist;';
+    let id = req.params.id;
+    conn.query(sql, id, (err, data, fields) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+        }
+        else {
+            if (data.length === 0) {
+                console.log('There is no data');
+                res.status(500).send('Internal Server Error');
+            }
+            else {
+                let sql = 'delete from projectlist where id=?;';
+                conn.query(sql, id, (err, data, fields) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send('Internal Server Error');
+                    }
+                    else {
+                        let sqlBefore = 'select * from projectlist;';
+                        conn.query(sqlBefore, (err, rows, fields) => {
+                            if (err) {
+                                console.log(err);
+                                res.status(500).send('Internal Server Error');
+                            }
+                            else
+                                res.render('prjList', { rows: rows });
+                        });
+                    }
+                });
+            }
+        }
+    });
+});
+exports.router.get('/:id/delete', (req, res) => {
+    let sql = 'select * from projectlist;';
+    conn.query(sql, (err, rows, fields) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+        }
+        else {
+            let id = req.params.id;
+            console.log(`id : ${id}`);
+            if (id) {
+                console.log(`id : ${id}`);
+                let sql = 'select * from projectlist where id=?;';
+                conn.query(sql, [id], (err, prj_item, fields) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send('Internal Server Error');
+                    }
+                    else {
+                        res.render('prjList', { rows: prj_item, row: prj_item[0], id: prj_item[0].id });
+                    }
+                });
+            }
+        }
+    });
+});
+//# sourceMappingURL=prjList.js.map

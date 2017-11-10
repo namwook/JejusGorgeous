@@ -45,7 +45,7 @@ router.post('/', (req: Request, res: Response) => {
         else {
             let sql2 = 'select * from projectlist;';
             conn.query(sql2, (err, data, fields) => {
-                res.render('prjList', {rows: data, id: rows[0].id});
+                res.render('prjList', {rows: data});
             });
         }
     });

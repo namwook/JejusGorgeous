@@ -62,8 +62,8 @@ router.post('/:id', (req: Request, res: Response) => {
                 }
                 else {
                     let sql2 = 'select * from projectlist where id=?;';
-                    conn.query(sql2,id, (err, data, fields) => {
-                        res.render('prjList', {rows: data, row:data[0]});
+                    conn.query(sql2, id, (err, data, fields) => {
+                        res.render('prjList', {rows: data, row: data[0]});
                     });
                 }
             });
@@ -95,4 +95,65 @@ router.get('/:id/edit', (req: Request, res: Response) => {
         console.log('There is no id');
         res.status(500).send('Internal Server Error');
     }
+});
+
+
+router.get('/:id/delete', (req: Request, res: Response) => {
+    let sql = 'select id, title from projectlist;';
+    let id = req.params.id;
+    conn.query(sql, id, (err, data, fields) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+        } else {
+            if (data.length === 0) {
+                console.log('There is no data');
+                res.status(500).send('Internal Server Error');
+            } else {
+                let sql = 'delete from projectlist where id=?;';
+                conn.query(sql, id, (err, data, fields) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send('Internal Server Error');
+                    } else {
+                        let sqlBefore: string = 'select * from projectlist;';
+                        conn.query(sqlBefore, (err, rows, fields) => {
+                            if (err) {
+                                console.log(err);
+                                res.status(500).send('Internal Server Error');
+                            }
+                            else res.render('prjList', {rows: rows});
+                        });
+                    }
+                });
+            }
+        }
+    });
+});
+
+
+router.get('/:id/delete', (req: Request, res: Response) => {
+    let sql: string = 'select * from projectlist;';
+    conn.query(sql, (err, rows, fields) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal Server Error');
+        } else {
+            let id = req.params.id;
+            console.log(`id : ${id}`);
+            if (id) {
+                console.log(`id : ${id}`);
+                let sql = 'select * from projectlist where id=?;';
+                conn.query(sql, [id], (err, prj_item, fields) => {
+                    if (err) {
+                        console.log(err);
+                        res.status(500).send('Internal Server Error');
+                    }
+                    else {
+                        res.render('prjList', {rows: prj_item, row: prj_item[0], id: prj_item[0].id});
+                    }
+                });
+            }
+        }
+    });
 });

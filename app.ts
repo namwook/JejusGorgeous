@@ -10,7 +10,6 @@ import * as users from './routes/users';
 import * as auth from './routes/auth';
 import * as list from './routes/prjList';
 import * as reg from './routes/prjRegister';
-// import * as edit from './routes/prjEdit';
 import * as signUp from './routes/signUp';
 
 var app = express();
@@ -36,7 +35,6 @@ app.use(session({
     // : 세션아이디를 실제로 사용하기전까지는 발급하지말아라
 }));
 
-// app.use('/prjEdit', edit.router);
 app.use('/', index.router);
 app.use('/users', users.router);
 app.use('/auth', auth.router);
