@@ -5,7 +5,7 @@ block content
     .row.mx-auto
         .col-12
             fieldset
-                form(action='/prjList/' + param.id, method='post')
+                form(action='/prjList/' + param.id +'/edit', method='post')
                     .form-row
                         .form-group.col-xs-8.col-sm-8.col-md-8
                             input.form-control(type='text',name='title',placeholder='title', value=param.title)

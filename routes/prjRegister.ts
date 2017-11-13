@@ -31,7 +31,8 @@ router.post('/', (req: Request, res: Response) => {
 
     console.log(`title is ${title} author is ${author} description is ${description}`);
 
-    let sql: string = 'insert into projectlist (title, author, description) VALUES(?,?,?)';
+    // language=MySQL
+    let sql: string = 'INSERT INTO projectlist (title, author, description) VALUES(?,?,?)';
     let params = [title, author, description];
 
     conn.query(sql, params, (err, rows, fields) => {
@@ -43,7 +44,8 @@ router.post('/', (req: Request, res: Response) => {
             res.status(500).send('Internal Server Error');
         }
         else {
-            let sql2 = 'select * from projectlist;';
+            // language=MySQL
+            let sql2 = 'SELECT * FROM projectlist;';
             conn.query(sql2, (err, data, fields) => {
                 res.render('prjList', {rows: data});
             });

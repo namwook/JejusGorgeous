@@ -1,5 +1,4 @@
 body {
-    /* FIXME: fixed top 때문인 padding-top을 반응형으로 바꿔줘야함 , 아닌가.. */
     padding-top:70px;
     max-width: 100%;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -12,4 +11,9 @@ a {
 
 *, ::after, ::before {
     box-sizing: border-box;
+}
+@media (max-width: 732px) {
+    body {
+        padding-top: 100px;
+    }
 }

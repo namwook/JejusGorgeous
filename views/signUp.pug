@@ -1,4 +1,16 @@
 extends layout
 
 block content
-    h4.display-4 Welcome signUP!
+    .col-lg-6.col-sm-12.mx-auto
+        h4.display-4 Welcome
+
+    .col-lg-6.col-sm-12.mx-auto
+        fieldset
+            form(action='/auth/register', method='post')
+                .form-group
+                    input.form-control(type='text', name='username', placeholder='username', required)
+                .form-group
+                    input.form-control(type='password', name='password', placeholder='password', required)
+                .form-group
+                    input.form-control(type='text', name='displayName', placeholder='displayName', required)
+                button.btn.btn-primary(type='submit') Submit

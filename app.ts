@@ -10,10 +10,21 @@ import * as users from './routes/users';
 import * as auth from './routes/auth';
 import * as list from './routes/prjList';
 import * as reg from './routes/prjRegister';
-import * as signUp from './routes/signUp';
+import * as signup from './routes/signup';
+import * as passport from "passport";
+
+let mysqlstore: any = require('express-mysql-session');
+let bkfd2Password = require('pbkdf2-password');
+
 
 var app = express();
 
+/*// let bkfd2Password = require('pbkdf2-password');
+let hasher = bkfd2Password();
+let opts = {password: 'helloworld'};
+hasher(opts,(err,pass,salt,hash)=>{
+    console.log(`${err}, ${pass}, ${salt},\n hash: ${hash}`);
+});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,20 +38,32 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+let sesStore = {
+    host: 'localhost',
+    user: 'root',
+    password: 'skadnr12',
+    database: 'o2'
+};
+
+
 app.use(session({
     secret: 'i-love-everything-except-you',
     resave: false,
     // 접속마다 아이디를 발급한다  = resave
-    saveUninitialized: true
     // : 세션아이디를 실제로 사용하기전까지는 발급하지말아라
+    saveUninitialized: true,
+    // store: new RedisStore(store)
+    store: new mysqlstore(sesStore)
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', index.router);
 app.use('/users', users.router);
 app.use('/auth', auth.router);
 app.use('/prjList', list.router);
 app.use('/prjRegister', reg.router);
-app.use('/signUp', signUp.router);
+app.use('/signUp', signup.router);
 
 
 // catch 404 and forward to error handler
